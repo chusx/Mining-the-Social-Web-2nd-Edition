@@ -18,6 +18,7 @@ dependencies = [
   "libfreetype6-dev", "libpng-dev",           # Matplotlib dependencies
   "libncurses5-dev", "vim", "git-core",
   "build-essential",
+  'libffi-dev', 'libssl-dev',
 ]
 
 dependencies.each do |pkg|
@@ -43,7 +44,7 @@ packages = [
 
   # Install FuXi per https://code.google.com/p/fuxi/wiki/Installation_Testing
   "http://cheeseshop.python.org/packages/source/p/pyparsing/pyparsing-1.5.5.tar.gz",
-  "https://fuxi.googlecode.com/hg/layercake-python.tar.bz2",
+  "/vagrant/layercake-python.tar.bz2",
   "https://pypi.python.org/packages/source/F/FuXi/FuXi-1.4.1.production.tar.gz",
 ]
 
@@ -51,6 +52,12 @@ packages.each do |package|
   python_pip package do
     action :install
   end
+end
+
+# boilerplate url fix, see http://stackoverflow.com/questions/33548865
+python_pip "/vagrant/python-boilerpipe" do
+  action :install 
+  install_options "-e"
 end
 
 execute "install_requirements" do
