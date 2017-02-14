@@ -18,6 +18,7 @@ dependencies = [
   "libfreetype6-dev", "libpng-dev",           # Matplotlib dependencies
   "libncurses5-dev", "vim", "git-core",
   "build-essential",
+  'libffi-dev', 'libssl-dev',
 ]
 
 dependencies.each do |pkg|
