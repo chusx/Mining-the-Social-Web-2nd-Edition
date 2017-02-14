@@ -57,7 +57,7 @@ end
 # boilerplate url fix, see http://stackoverflow.com/questions/33548865
 python_pip "/vagrant/python-boilerpipe" do
   action :install 
-  install_options "-e"
+  options "-e"
 end
 
 execute "install_requirements" do
